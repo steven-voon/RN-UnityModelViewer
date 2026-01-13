@@ -5,17 +5,16 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 export default function UnityScreen() {
   const unityRef = useRef<any>(null);
 
-  const sendMessageToUnity = () => {
+  // Helper function to send messages
+  const sendToUnity = (message: string) => {
     if (unityRef.current) {
       // Arguments: (GameObject, FunctionName, Message)
-      console.log('Send to Unity:');
-      unityRef.current.postMessage('ReactBridge', 'ReceiveMessageFromRN', 'ToggleHotpost');
+      unityRef.current.postMessage('ReactBridge', 'ReceiveMessageFromRN', message);
     }
   };
 
   return (
     <View style={styles.container}>
-      {/* The Unity View */}
       <UnityView
         ref={unityRef}
         style={{ flex: 1 }}
@@ -23,10 +22,28 @@ export default function UnityScreen() {
           console.log('Received from Unity:', result.nativeEvent.message);
         }}
       />
-      {/* Control Button Overlay */}
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={sendMessageToUnity}>
-          <Text style={styles.buttonText}>Send to Unity</Text>
+
+      {/* Button Overlay Group */}
+      <View style={styles.buttonGroup}>
+        <TouchableOpacity 
+          style={[styles.button, styles.buttonA]} 
+          onPress={() => sendToUnity('ShowKerisA')}
+        >
+          <Text style={styles.buttonText}>Switch Keris A</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={[styles.button, styles.buttonB]} 
+          onPress={() => sendToUnity('ShowKerisB')}
+        >
+          <Text style={styles.buttonText}>Switch Keris B</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={styles.button} 
+          onPress={() => sendToUnity('ToggleHotspot')}
+        >
+          <Text style={styles.buttonText}>Toggle Hotspot</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -34,26 +51,24 @@ export default function UnityScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'black',
-  },
-  buttonContainer: {
+  container: { flex: 1, backgroundColor: 'black' },
+  buttonGroup: {
     position: 'absolute',
-    bottom: 50,
-    left: 0,
-    right: 0,
+    bottom: 40,
+    width: '100%',
+    flexDirection: 'column', // Stack them vertically
     alignItems: 'center',
+    gap: 10, // Add space between buttons
   },
   button: {
-    backgroundColor: '#007AFF',
-    paddingHorizontal: 20,
+    backgroundColor: '#333',
+    paddingHorizontal: 25,
     paddingVertical: 12,
-    borderRadius: 8,
+    borderRadius: 10,
+    width: '80%', // Make buttons wider for better UX
+    alignItems: 'center',
   },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
+  buttonA: { backgroundColor: '#FF9500' }, // Orange for Keris A
+  buttonB: { backgroundColor: '#5856D6' }, // Purple for Keris B
+  buttonText: { color: 'white', fontWeight: 'bold', fontSize: 16 },
 });
