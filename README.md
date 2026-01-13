@@ -31,6 +31,7 @@ These commands allow communication from **React Native** to the **Unity** view.
 ```javascript
 // Calling from React Native
 unityRef.current.postMessage('ReactBridge', 'ReceiveMessageFromRN', "ShowKerisA");
+```
 
 # Welcome to your Expo app 👋
 
