@@ -1,15 +1,3 @@
-
-## CONFIGURATION
-
-Unity Version - Unity 6.0 (60000.0.59f2)
-NDK Version - 27.2.12479018
-Unity File - https://drive.google.com/drive/folders/1hGMcdb8c8IzW-4CuBvo3nCh7ZQQKzSEs?usp=sharing
-After download Unity File, extract all files to this folder " HelloWorldApp\unity\builds"
-CUrrently available message to communicate from react native to unity 
--postMessage('ReactBridge', 'ReceiveMessageFromRN', "ShowKerisA")
--postMessage('ReactBridge', 'ReceiveMessageFromRN', "ShowKerisB")
--postMessage('ReactBridge', 'ReceiveMessageFromRN', "ToggleHotspot")
-
 ## 🛠 Unity Configuration
 
 To ensure the Unity-React Native bridge works correctly, verify the following environment settings:
