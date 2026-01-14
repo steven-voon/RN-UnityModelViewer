@@ -10,7 +10,7 @@ To ensure the Unity-React Native bridge works correctly, verify the following en
 ### 📥 Asset Setup
 1. **Download:** Access the Unity build files via [Google Drive](https://drive.google.com/drive/folders/1hGMcdb8c8IzW-4CuBvo3nCh7ZQQKzSEs?usp=sharing).
 2. **Extract:** Place all files into the specific directory:
-   > `HelloWorldApp/unity/builds/android`
+   > `[app_roo]/unity/builds/android`
 
 ---
 
