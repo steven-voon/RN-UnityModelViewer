@@ -39,6 +39,12 @@ Due to changes in Unity 6, you must manually patch the following file in your `n
 
 **File Path:** `...\node_modules\@azesmway\react-native-unity\android\src\main\java\com\azesmwayreactnativeunity\UPlayer.java`
 
+### Update Imports
+Check the top of the file. If `View` is not recognized, add this line to the imports:
+```java
+import android.view.View;
+```
+
 **Locate the return statement and update it:**
 
 ```java
