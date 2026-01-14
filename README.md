@@ -33,6 +33,22 @@ These commands allow communication from **React Native** to the **Unity** view.
 unityRef.current.postMessage('ReactBridge', 'ReceiveMessageFromRN', "ShowKerisA");
 ```
 
+## 🔧 Required Library Fix (Android)
+
+Due to changes in Unity 6, you must manually patch the following file in your `node_modules` to avoid view errors:
+
+**File Path:** `...\node_modules\@azesmway\react-native-unity\android\src\main\java\com\azesmwayreactnativeunity\UPlayer.java`
+
+**Locate the return statement and update it:**
+
+```java
+// Change this:
+return unityPlayer;
+
+// To this:
+return (android.widget.FrameLayout) unityPlayer.getView();
+```
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
